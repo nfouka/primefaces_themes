@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>Panels: Exercises</title>
+<script>
+var coreservlets = {};
+coreservlets.randomTheme = function() {
+  if (Math.random() > 0.5) {
+    return("ui-lightness");
+  } else {
+    return("ui-darkness");
+  }
+};
+</script>
+</h:head>
+<h:body>
+<h1 class="ui-widget-header ui-corner-all" align="center">
+Panels: Exercises</h1>
+<div align="center">
+<h:form>
+<h:panelGrid columns="3">
+Choose a theme:
+<p:themeSwitcher> 
+  <f:selectItems value="#{smartThemeChoices.themes}" />  
+</p:themeSwitcher> 
+<p:commandButton value="Random Theme" 
+                 onclick="PrimeFaces.changeTheme(coreservlets.randomTheme())"/>
+</h:panelGrid>
+</h:form>
+</div>
+<p:accordionPanel>
+<p:tab title="Tabbed Panels with Static Content">
+  <p:tabView>
+  <p:tab title="Tab 0">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 1">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 2">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 3">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 4">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+</p:tabView>
+</p:tab>
+
+<p:tab title="Tabbed Panels with Lazy Loading">
+  <p:tabView dynamic="true">
+  <p:tab title="Tab 0">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 1">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 2">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 3">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 4">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+</p:tabView>
+</p:tab>
+
+<p:tab title="Tabbed Panels with Dynamic/Ajax Loading">
+  <p:tabView dynamic="true" cache="false">
+  <p:tab title="Tab 0">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 1">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 2">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 3">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  <p:tab title="Tab 4">
+    <h1>#{testBean.date}</h1>
+  </p:tab>
+  </p:tabView>
+</p:tab>
+
+<p:tab title="Tables with p:panelGrid">
+<h:panelGrid columns="3">
+  <p:panelGrid columns="1">
+  <f:facet name="header">First Table</f:facet>
+  <h1>Blah, blah, blah</h1>
+  </p:panelGrid>
+  
+  <p:panelGrid columns="1">
+  <f:facet name="header">Second Table</f:facet>
+  <h1>Yadda, yadda, yadda</h1>
+  </p:panelGrid>
+  
+  <p:panelGrid columns="1">
+  <f:facet name="header">Third Table</f:facet>
+  <h1>Foo, bar, baz</h1>
+  </p:panelGrid>
+</h:panelGrid>
+</p:tab>
+
+<p:tab title="Scroll Panel">
+  <p:scrollPanel style="width: 400px; height: 300px" mode="native">
+  <h:graphicImage url="/images/internet-cafes/cafe-19.jpg"/>
+  </p:scrollPanel>
+</p:tab>
+</p:accordionPanel>
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><hr/>
+<font size="-3">All code from the
+<a href="http://courses.coreservlets.com/Course-Materials/">
+coreservlets.com J2EE tutorials (servlets, JSP, JSF 2, PrimeFaces, Ajax with jQuery, GWT, Spring, Hibernate, JPA, Hadoop, 
+SOAP-based and RESTful Web Services, Android development, &amp; Java 7 programming)</a>. There are also live instructor-led
+<a href="http://courses.coreservlets.com/">training courses on
+the same J2EE topics (servlets, JSP, JSF 2, PrimeFaces, Ajax with jQuery, GWT, Spring, Hibernate, JPA, Hadoop, 
+SOAP-based and RESTful Web Services, Android development, &amp; Java 7 programming)</a> These courses
+can be customized and taught onsite at <i>your</i> organization.
+Also see the <a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">JSF 2 tutorial</a> and the
+<a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">PrimeFaces tutorial</a>.</font>
+</h:body></html>

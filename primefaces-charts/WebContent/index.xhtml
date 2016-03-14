@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>PrimeFaces Charts</title>
+<h:outputStylesheet name="css/styles.css"/>
+</h:head>
+<h:body>
+
+<h1 class="ui-widget-header ui-corner-all">PrimeFaces Charts</h1>
+<br/>
+<p:fieldset legend="Pie Chart">  
+<h:panelGrid columns="3">
+<p:chart type="pie" model="#{pieChart.model2011}" 
+         styleClass="medium-pie"/>
+<p:chart type="pie" model="#{pieChart.model2013}" 
+         styleClass="medium-pie"/>
+<p:chart type="pie" model="#{pieChart.model2015}" 
+         styleClass="medium-pie"/>
+</h:panelGrid>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Line Chart">  
+<p:chart type="line" model="#{lineChart.yearModel}"/>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Area Chart">  
+<p:chart type="line" model="#{areaChart.yearModel}"/>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Bar Chart">  
+<p:chart type="bar" model="#{barChart.yearModel}"/>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Ajax-Enabled Bar Chart"> 
+<!-- Must be inside h:form! --> 
+<h:form>
+<p:growl id="growl"/>
+<p:chart type="bar" model="#{ajaxBarChart.yearModel}">
+  <p:ajax event="itemSelect" listener="#{ajaxBarChart.handleItemSelect}"
+          update="growl"/>
+</p:chart>
+</h:form>
+</p:fieldset>
+
+<ui:include src="/WEB-INF/snippets/training-course-ad.xhtml"/>
+</h:body></html>

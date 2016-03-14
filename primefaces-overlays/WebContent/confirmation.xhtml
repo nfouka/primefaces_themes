@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>Using p:confirmDialog</title>
+<h:outputStylesheet name="css/styles.css"/>
+</h:head>
+<h:body>
+<h1 class="ui-widget-header ui-corner-all" align="center">Using p:confirmDialog</h1>
+
+<h2>Your account</h2>
+<p>Information about your very important account.</p>
+<p>More information about your <i>very</i> important account.</p>
+<p>Even more information about your <b>extremely</b> important account.</p>
+<h:form>
+
+<p:commandButton value="Delete Account"
+                 onclick="PF('confirmation').show()"/>
+<p:confirmDialog header="Delete Account" 
+                 message="Permanently delete account?"
+                 severity="alert"
+                 widgetVar="confirmation">
+  <p:commandButton value="No, Save It" 
+      icon="ui-icon-disk"
+      onclick="PF('confirmation').hide(); PF('saved').show()" />
+  <p:commandButton value="Yes, Delete It" 
+      action="#{dialogBean.deleteAccount}"
+      icon="ui-icon-alert"
+      oncomplete="PF('confirmation').hide(); PF('deleted').show()"/>
+</p:confirmDialog>
+<p:dialog header="Account Saved" widgetVar="saved">
+  <h2>Your account has been saved</h2>
+</p:dialog>
+<p:dialog header="Account Deleted" widgetVar="deleted">
+  <h2>Your account has been deleted</h2>
+</p:dialog>
+
+</h:form>
+
+</h:body></html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>p:dataTable: Sortable Columns</title>
+</h:head>
+<h:body>
+<h1 class="ui-widget-header ui-corner-all" align="center">p:dataTable: Sortable Columns</h1>
+<br/>
+
+<p>The sortBy attribute designates the property for Ajax-based sorting. 
+It uses the default Java comparator unless you specify sortFunction.
+Since it uses Ajax, you must enclose the table in h:form.</p>
+
+<h:form>
+<p:dataTable var="programmer" value="#{company1.programmers}">
+  <f:facet name="header">Programmers at #{company1.companyName}</f:facet>
+  <p:column headerText="First Name" sortBy="#{programmer.firstName}">
+    #{programmer.firstName}
+  </p:column>
+  <p:column headerText="Last Name" sortBy="#{programmer.lastName}">
+    #{programmer.lastName}
+  </p:column>
+  <p:column headerText="Experience Level" sortBy="#{programmer.level}">
+    #{programmer.level}
+  </p:column>
+  <p:column headerText="Languages" sortBy="#{programmer.languageList}"
+            sortFunction="#{sorter.compareLength}">
+    #{programmer.languageList}
+  </p:column>
+</p:dataTable>
+</h:form>
+<br/>
+</h:body></html>

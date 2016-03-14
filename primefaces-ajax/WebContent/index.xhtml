@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>Ajax with PrimeFaces</title>
+<h:outputStylesheet name="css/styles.css"/>
+</h:head>
+<h:body>
+
+<div align="center">
+<h1 class="ui-widget-header ui-corner-all">Ajax with PrimeFaces</h1>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="No Ajax">  
+<h:form>
+  <p:commandButton value="Show Number" 
+                   action="#{numberGenerator.randomize}"
+                   ajax="false"/>
+  <h2>#{numberGenerator.number}</h2>
+</h:form>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Using 'update'">  
+<h:form>
+<p:commandButton value="Show Number" 
+                 action="#{numberGenerator.randomize}"
+                 update="num-field"/>
+<h2><h:outputText value="#{numberGenerator.number}"
+                  id="num-field"/></h2>
+</h:form>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Using 'process'">  
+<h:form>
+Range:
+<p:spinner value="#{numberGenerator.range}"
+           id="range-field"/>
+<p:commandButton value="Show Number"
+                 process="range-field"
+                 action="#{numberGenerator.randomize}"
+                 update="num-field"/>
+<h2><h:outputText value="#{numberGenerator.number}"
+                  id="num-field"/></h2>
+</h:form>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Ajax Validation with Explicit 'update'">  
+<h:form>
+<h:panelGrid columns="4">
+Range:
+<p:inputText value="#{numberGenerator.range}"
+             id="range-field"
+             required="true"
+             requiredMessage="Range required (using 1.0)"
+             converterMessage="Range must be number (using 1.0)">
+</p:inputText>
+<p:message for="range-field" id="error-field"/>
+<p:commandButton value="Show Number" 
+                 action="#{numberGenerator.randomize}"
+                 process="range-field"
+                 update="num-field error-field"/>
+</h:panelGrid> 
+<h2><h:outputText value="#{numberGenerator.number}"
+                  id="num-field"/></h2>
+</h:form>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Ajax Validation with 'autoUpdate'">
+Note that in real life you should not use p:messages with autoUpdate
+if you have another form in the page that sets error messages.
+<h:form>
+<p:messages autoUpdate="true"/><br/>
+Range:
+<p:inputText value="#{numberGenerator.range}"
+             required="true"
+             requiredMessage="Range required (using 1.0)"
+             converterMessage="Range must be number (using 1.0)">
+</p:inputText><br/>
+<p:commandButton value="Show Number" 
+                 action="#{numberGenerator.randomize}"
+                 process="@form"
+                 update="num-field"/>
+<h2><h:outputText value="#{numberGenerator.number}"
+                  id="num-field"/></h2>
+</h:form>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Using 'event' with Standard DOM Events">
+<h:form>
+Temperature in Fahrenheit:
+<p:inputText value="#{tempConverter.fahrenheit}">
+  <p:ajax event="keyup" update="cField kField"/>
+</p:inputText><br/>
+<h2>Temperature in Celsius: 
+<h:outputText value="#{tempConverter.celsius}"
+              id="cField"/><br/>
+Temperature in Kelvin: 
+<h:outputText value="#{tempConverter.kelvin}"
+              id="kField"/><br/>
+</h2>
+</h:form>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Using 'event' with Custom PrimeFaces Events">  
+<h:form>
+Range:
+<p:spinner value="#{numberGenerator.range}">
+  <p:ajax update="num-field"/>
+</p:spinner>
+<h2><h:outputText value="#{numberGenerator.number}"
+                  id="num-field"/></h2>
+</h:form>
+</p:fieldset>
+<!-- ========== -->
+<br/>
+<p:fieldset legend="Using p:ajaxStatus">  
+<h:form>
+<p:commandButton value="Show Number" 
+                 action="#{numberGenerator.randomize}"
+                 update="num-field"/>
+<p:ajaxStatus>
+<f:facet name="start">
+  <h2><p:graphicImage name="images/ajax-loader.gif"/>
+       Getting data from server...</h2>
+</f:facet>
+<f:facet name="complete">
+  <h2><h:outputText value="#{numberGenerator.numberSlow}"
+                    id="num-field"/></h2>
+</f:facet>
+</p:ajaxStatus>
+</h:form>
+</p:fieldset>
+
+</div>
+
+
+
+
+<ui:include src="/WEB-INF/snippets/training-course-ad.xhtml"/>
+</h:body></html>

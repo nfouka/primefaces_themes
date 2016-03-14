@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>Exercises: PrimeFaces DataTables</title>
+</h:head>
+<h:body>
+
+<h1 class="ui-widget-header ui-corner-all">Exercises: PrimeFaces DataTables</h1>
+<br/>
+<p:fieldset legend="Simple Table">
+<br/>
+<p:dataTable var="member" value="#{someOrganization.members}">
+  <p:column>#{member.firstName}</p:column>
+  <p:column>#{member.lastName}</p:column>
+  <p:column>#{member.emailAddress}</p:column>
+  <p:column>#{member.age}</p:column>
+</p:dataTable>
+<br/>
+</p:fieldset>
+<br/>
+<!-- ========== -->
+<p:fieldset legend="Table with Headers">
+<br/>
+<p:dataTable var="member" value="#{someOrganization.members}">
+  <f:facet name="header">Members of SomeOrganization</f:facet>
+  <p:column headerText="First Name">#{member.firstName}</p:column>
+  <p:column headerText="Last Name">#{member.lastName}</p:column>
+  <p:column headerText="Email Address">#{member.emailAddress}</p:column>
+  <p:column headerText="Age">#{member.age}</p:column>
+</p:dataTable>
+<br/>
+</p:fieldset>
+<br/>
+<!-- ========== -->
+<p:fieldset legend="Table with Sortable Columns">
+<br/>
+<h:form>
+<p:dataTable var="member" value="#{someOrganization.members}">
+  <f:facet name="header">Members of SomeOrganization</f:facet>
+  <p:column headerText="First Name">#{member.firstName}</p:column>
+  <p:column headerText="Last Name" sortBy="#{member.lastName}">#{member.lastName}</p:column>
+  <p:column headerText="Email Address">#{member.emailAddress}</p:column>
+  <p:column headerText="Age" sortBy="#{member.age}">#{member.age}</p:column>
+</p:dataTable>
+</h:form>
+<br/>
+</p:fieldset>
+<br/>
+<!-- ========== -->
+<p:fieldset legend="Table with Pagination">
+<br/>
+<p:dataTable var="member" value="#{someOrganization.members}" rows="4" paginator="true">
+  <f:facet name="header">Members of SomeOrganization</f:facet>
+  <p:column headerText="First Name">#{member.firstName}</p:column>
+  <p:column headerText="Last Name">#{member.lastName}</p:column>
+  <p:column headerText="Email Address">#{member.emailAddress}</p:column>
+  <p:column headerText="Age">#{member.age}</p:column>
+</p:dataTable>
+<br/>
+</p:fieldset>
+<br/>
+
+
+
+
+
+<ui:include src="/WEB-INF/snippets/training-course-ad.xhtml"/>
+</h:body></html>

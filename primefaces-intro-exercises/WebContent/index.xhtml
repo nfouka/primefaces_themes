@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>PrimeFaces Intro Exercises</title>
+</h:head>
+<h:body>
+
+<div align="center">
+<h1 class="ui-widget-header ui-corner-all" align="center">PrimeFaces Intro Exercises</h1>
+<br/>
+<p:fieldset legend="No Server Behavior">  
+<h:form>
+   <b>Choose number:</b> <p:spinner/><br/>
+   <p:commandButton value="Send"/>
+   <p:commandButton value="Cancel"/>
+</h:form>
+</p:fieldset>
+<br/>
+<p:fieldset legend="Simple Server Behavior">  
+<h:form>
+   <b>Choose number:</b> <p:spinner value="#{introBean.num}"/><br/>
+   <p:commandButton value="Send" action="#{introBean.doSend}" ajax="false"/>
+   <p:commandButton value="Cancel" action="#{introBean.doCancel}" ajax="false"/>
+</h:form>
+</p:fieldset>
+<br/>
+
+</div>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><hr/>
+<font size="-3">All code from the
+<a href="http://courses.coreservlets.com/Course-Materials/">
+coreservlets.com J2EE tutorials (JSF 2, PrimeFaces, Ajax with jQuery, GWT, Spring, Hibernate, JPA, Hadoop, 
+SOAP-based and RESTful Web Services, Android development, Java 7 programming, Java 8 lambda expressions and
+Streams, servlets, JSP, custom topics, etc.)</a>. There are also live instructor-led
+<a href="http://courses.coreservlets.com/">training courses on
+the same J2EE topics (JSF 2, PrimeFaces, Ajax with jQuery, GWT, Spring, Hibernate, JPA, Hadoop, 
+SOAP-based and RESTful Web Services, Android development, Java 7 programming, Java 8 lambda expressions and
+Streams, servlets, JSP, custom topics, etc.)</a> These courses
+can be customized and taught onsite at <i>your</i> organization.
+Also see the <a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">JSF 2 tutorial</a> and the
+<a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">PrimeFaces tutorial</a>.</font>
+</h:body></html>

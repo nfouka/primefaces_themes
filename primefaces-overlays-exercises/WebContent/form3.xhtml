@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>p:tooltip</title>
+</h:head>
+<h:body>
+
+<h1 class="ui-widget-header ui-corner-all" align="center">p:tooltip</h1>
+<br/>
+<p:fieldset legend="Enter Bid">
+<h:form>
+  <p:growl/>
+  Item ID:
+  <p:inputText value="#{bidBean.itemId}"
+               required="true"
+               requiredMessage="You forgot the item ID"/><br/>
+  Amount:
+  <p:inputText value="#{bidBean.bidAmount}"
+               id="bid"
+               required="true"
+               requiredMessage="You forgot the bid amount"
+               converterMessage="Your bid amount is not a number"
+               validatorMessage="Minimum bid is $5.00">
+    <f:validateDoubleRange minimum="5"/>
+  </p:inputText>
+  <p:tooltip for="bid" value="Amount in dollars. Minimum $5.00"/>
+  <br/>
+  <p:commandButton action="#{bidBean.confirmBid}" 
+                   value="Submit" ajax="false"/>
+</h:form>
+</p:fieldset>
+</h:body></html>

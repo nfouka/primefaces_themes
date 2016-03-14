@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>Using p:dialog</title>
+<h:outputStylesheet name="css/styles.css"/>
+</h:head>
+<h:body>
+<h1 class="ui-widget-header ui-corner-all" align="center">Using p:dialog</h1>
+<div align="center">
+
+<h:form>
+<!-- ========== -->
+<br/>
+<p:commandButton value="Static Text"
+                 onclick="PF('dialog1').show()"/>
+<p:dialog header="Dialog 1" widgetVar="dialog1">
+  <h2>Some static text here</h2>
+  <h2>More static text here</h2>
+</p:dialog>
+<!-- ========== -->
+<br/><br/>
+<p:commandButton value="Dynamic Text Created on Page Load"
+                 onclick="PF('dialog2').show()"/>
+<p:dialog header="Dialog 2" widgetVar="dialog2">
+  <h2>The time is #{dialogBean.time}</h2>
+  <h2>Additional static text here</h2>
+</p:dialog>
+<!-- ========== -->
+<br/><br/>
+<p:commandButton value="Dynamic Text Created on Button Click"
+                 action="#{dialogBean.updateTime}"
+                 update="time-message"
+                 oncomplete="PF('dialog3').show()"/>
+<p:dialog header="Dialog 3" widgetVar="dialog3">
+  <h2>The time is 
+      <h:outputText value="#{dialogBean.time}"
+                    id="time-message"/>
+  </h2>
+  <h2>Additional static text here</h2>
+</p:dialog>
+<!-- ========== -->
+<br/><br/>
+<p:commandButton value="Animation"
+                 onclick="PF('dialog4').show()"/>
+<p:dialog header="Dialog 4" widgetVar="dialog4"
+          showEffect="bounce" hideEffect="explode">
+  <h2>Any type of dialog content here</h2>
+  <h2>More dialog content here</h2>
+</p:dialog>
+<!-- ========== -->
+<br/><br/>
+<p:commandButton value="Modal Dialogs"
+                 onclick="PF('dialog5').show()"/>
+<p:dialog header="Dialog 5" widgetVar="dialog5"
+          modal="true">
+  <h2>Any type of dialog content here</h2>
+  <h2>More dialog content here</h2>
+</p:dialog>
+
+</h:form>
+
+</div>
+</h:body></html>

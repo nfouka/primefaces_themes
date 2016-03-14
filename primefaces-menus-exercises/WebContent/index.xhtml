@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>Exercises: PrimeFaces Menus</title>
+</h:head>
+<h:body>
+
+<h1 class="ui-widget-header ui-corner-all">Exercises: PrimeFaces Menus</h1>
+<br/>
+
+<h:form>
+<p:menubar>
+
+<p:submenu label="Search">
+  <p:menuitem value="Google" url="https://www.google.com/"/>
+  <p:menuitem value="Bing" url="http://www.bing.com/"/>
+  <p:menuitem value="Yahoo" url="https://search.yahoo.com/"/>
+  <p:menuitem value="Baidu" url="http://www.baidu.com/"/>
+</p:submenu>
+
+<p:submenu label="Sites">
+<p:submenu label="Search">
+  <p:menuitem value="Google" url="https://www.google.com/"/>
+  <p:menuitem value="Bing" url="http://www.bing.com/"/>
+  <p:menuitem value="Yahoo" url="https://search.yahoo.com/"/>
+  <p:menuitem value="Baidu" url="http://www.baidu.com/"/>
+</p:submenu>
+<p:submenu label="Social Networking">
+  <p:menuitem value="Facebook" url="https://www.facebook.com/"/>
+  <p:menuitem value="LinkedIn" url="https://www.linkedin.com/nhome/"/>
+</p:submenu>
+<p:submenu label="Travel">
+  <p:menuitem value="Travelocity" url="http://www.travelocity.com/"/>
+  <p:menuitem value="Orbitz" url="http://www.orbitz.com/"/>
+  <p:menuitem value="Expedia" url="http://www.expedia.com/"/>
+  <p:menuitem value="Kayak" url="http://www.kayak.com/"/>
+</p:submenu>
+</p:submenu>
+
+<p:submenu label="Actions">
+  <p:menuitem value="Simple Dialog" onclick="PF('dialog1').show()"/>
+  <p:menuitem value="Time Dialog" action="#{dialogBean.updateTime}"
+              update="time-message" oncomplete="PF('dialog2').show()"/>
+</p:submenu>
+
+</p:menubar>
+<p:dialog header="Simple Dialog" widgetVar="dialog1">
+  <h2>Blah, blah, blah.</h2>
+  <h2>Yadda, yadda, yadda.</h2>
+  <h2>Foo, bar, baz.</h2>
+</p:dialog>
+<p:dialog header="Time Dialog" widgetVar="dialog2">
+  <h2>The time is 
+      <h:outputText value="#{dialogBean.time}"
+                    id="time-message"/>
+  </h2>
+</p:dialog>
+</h:form>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+
+<ui:include src="/WEB-INF/snippets/training-course-ad.xhtml"/>
+</h:body></html>
